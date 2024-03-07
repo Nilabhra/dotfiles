@@ -23,7 +23,7 @@ return {
 		},
 		config = function()
 			require("tokyonight").setup({
-				dim_inactive = true,
+				dim_inactive = false,
 			})
 			vim.cmd.colorscheme("tokyonight-night")
 		end,
