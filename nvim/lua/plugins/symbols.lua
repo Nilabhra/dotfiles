@@ -12,7 +12,7 @@ return {
 				show_symbol_lineno = true,
 			},
 			preview_window = {
-				auto_preview = true,
+				auto_preview = false,
 			},
 		})
 	end,
