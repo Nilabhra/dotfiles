@@ -19,6 +19,14 @@ return {
 				theme = "tokyonight",
 			},
 			sections = {
+				lualine_a = {
+					{
+						"mode",
+						fmt = function(mode)
+							return mode:sub(1, 1)
+						end,
+					},
+				},
 				lualine_c = {
 					{
 						"filename",
