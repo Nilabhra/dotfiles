@@ -5,7 +5,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 		"MunifTanjim/nui.nvim",
-		"3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` nifor more information
+		"3rd/image.nvim",            -- Optional image support in preview window: See `# Preview Mode` nifor more information
 	},
 	event = "VeryLazy",
 	config = function()
@@ -16,7 +16,7 @@ return {
 				},
 			},
 		})
-		vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle float<CR>")
+		vim.keymap.set("n", "<C-n>", ":Neotree filesystem toggle left<CR>")
 		vim.api.nvim_set_hl(0, "NeoTreeNormalNC", { bg = "none" })
 		vim.api.nvim_set_hl(0, "NeoTreeNormal", { bg = "none" })
 	end,
