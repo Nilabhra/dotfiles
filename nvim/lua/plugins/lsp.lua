@@ -25,12 +25,11 @@ return {
 
 			-- Pyright setup:
 			lspconfig.pyright.setup({
-				-- on_attach = true,
 				capabilities = capabilities,
 				settings = {
 					pyright = {
 						autoImportCompletion = true,
-						disableOrganizeImports = false,
+						disableOrganizeImports = true,
 						disableLanguageServices = false,
 					},
 					python = {
@@ -45,11 +44,12 @@ return {
 				},
 			})
 			-- Ruff setup
-			-- Enable completion triggered by <c-x><c-o>
 			lspconfig.ruff_lsp.setup({
-				settings = { organizeImports = false }, -- I don't like how Ruff formats the imports.
+				capabilities = capabilities,
+				settings = { organizeImports = true },
 				on_attach = function(client, bufnr)
 					client.server_capabilities.hoverProvider = false
+					-- Enable completion triggered by <c-x><c-o>
 					vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 				end,
 			})
@@ -67,7 +67,7 @@ return {
 			vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action)
 			vim.keymap.set("n", "gr", vim.lsp.buf.references)
 			vim.keymap.set("n", "<space>f", function()
-				vim.lsp.buf.format({ async = true })
+				vim.lsp.buf.format({ async = false })
 			end)
 		end,
 	},
