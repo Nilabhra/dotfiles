@@ -3,7 +3,7 @@ return {
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup()
-			-- should be space
+			--should be spaces
 		end,
 	},
 	{
