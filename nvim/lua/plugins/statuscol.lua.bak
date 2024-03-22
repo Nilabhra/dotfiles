@@ -12,25 +12,25 @@ return {
 				},
 				{
 					text = {
-            " ",
+						" ",
 						function(args, fa)
 							args.nu = true
 							args.rnu = false
 							return builtin.lnumfunc(args, fa)
 						end,
-            " "
+						" ",
 					},
 					click = "v:lua.ScLa",
 				},
 				{
-          " ",
+					" ",
 					text = {
 						function(args, fa)
 							args.nu = true
 							args.rnu = true
 							return builtin.lnumfunc(args, fa)
 						end,
-          " "
+						" ",
 					},
 					click = "v:lua.ScLa",
 				},
