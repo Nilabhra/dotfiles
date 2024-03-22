@@ -15,7 +15,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    -- event = { "BufReadPre", "BufNewFile", "BufWritePre", "BufWritePost"},
+    event = { "BufReadPre", "BufNewFile", "BufWritePre" },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
@@ -30,7 +30,7 @@ return {
                 [vim.fn.expand("$VIMRUNTIME/lua")] = true,
                 [vim.fn.expand("config") .. "/lua"] = true,
               },
-            }
+            },
           },
         },
       })
