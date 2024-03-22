@@ -3,6 +3,7 @@ return {
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup()
+			-- should be space
 		end,
 	},
 	{
@@ -20,7 +21,12 @@ return {
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
-				settings = { Lua = { diagnostics = { globals = { "vim" } } } },
+				settings = {
+					Lua = {
+						diagnostics = { globals = { "vim" } },
+						-- format = { enable = true, defaultConfig = { indent_style = "space", indent_size = "2" } },
+					},
+				},
 			})
 
 			-- Pyright setup:
