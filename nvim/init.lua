@@ -24,5 +24,3 @@ vim.opt.cursorline = true
 -- vim.cmd([[highlight LineNr ctermbg=0 guibg=#032843 guifg=grey]])
 vim.cmd([[highlight TreesitterContextBottom gui=underline guisp=Green]])
 vim.cmd([[highlight TreesitterContextLineNumberBottom gui=underline guisp=Grey]])
-
-require("editor-conf")

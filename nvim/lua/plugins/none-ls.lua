@@ -6,8 +6,20 @@ return {
     local null_ls = require("null-ls")
     null_ls.setup({
       sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.black,
+
+        -- Lua formatting
+        null_ls.builtins.formatting.stylua.with({
+          extra_args = {
+            "--indent-type",
+            "Spaces",
+            "--indent-width",
+            "2",
+            "--quote-style",
+            "ForceDouble",
+          },
+        }),
+
+        -- Python import organisation
         null_ls.builtins.formatting.isort.with({
           args = {
             "--profile",
@@ -18,6 +30,9 @@ return {
             "-",
           },
         }),
+
+        -- Python formatting
+        null_ls.builtins.formatting.black,
         -- null_ls.builtins.formatting.ruff,
       },
 

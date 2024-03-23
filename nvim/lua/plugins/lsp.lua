@@ -9,22 +9,24 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pyright", "ruff_lsp" },
+        ensure_installed = { "lua_ls", "pyright", "ruff_lsp", "black", "isort", "stylua" },
       })
     end,
   },
   {
     "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile", "BufWritePre" },
+    event = { "BufReadPre", "BufNewFile", "BufWritePre", "BufEnter" },
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
+
+      -- LuaLS setup:
       lspconfig.lua_ls.setup({
         capabilities = capabilities,
         settings = {
           Lua = {
             diagnostics = { globals = { "vim" } },
-            format = { enable = true, defaultConfig = { indent_style = "space", indent_size = "2" } },
+            format = { enable = false, defaultConfig = { indent_style = "space", indent_size = "2" } },
             workspace = {
               library = {
                 [vim.fn.expand("$VIMRUNTIME/lua")] = true,
