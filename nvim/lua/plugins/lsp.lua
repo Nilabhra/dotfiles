@@ -11,7 +11,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pyright", "ruff_lsp", "black", "isort", "stylua" },
+        ensure_installed = { "lua_ls", "pyright", "ruff_lsp" },
       })
     end,
   },
@@ -54,7 +54,7 @@ return {
               diagnosticsMode = "workspace",
               useLibraryCodeForTypes = true,
               typeCheckingMode = "basic",
-              -- ignore = { "*" }, -- I prefer Ruff to do this not Pywright.
+              -- ignore = { "*" }, -- I prefer Ruff to do this not Pyright.
             },
           },
         },

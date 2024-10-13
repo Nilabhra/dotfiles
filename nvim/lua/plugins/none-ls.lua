@@ -20,16 +20,18 @@ return {
         }),
 
         -- Python import organisation
-        null_ls.builtins.formatting.isort.with({
-          args = {
-            "--profile",
-            "black",
-            "--stdout",
-            "--filename",
-            "$FILENAME",
-            "-",
-          },
-        }),
+        -- This is commented out as Ruff is being used for
+        -- sorting imports.
+        -- null_ls.builtins.formatting.isort.with({
+        --   args = {
+        --     "--profile",
+        --     "black",
+        --     "--stdout",
+        --     "--filename",
+        --     "$FILENAME",
+        --     "-",
+        --   },
+        -- }),
 
         -- Python formatting
         null_ls.builtins.formatting.black,
@@ -43,9 +45,31 @@ return {
             group = augroup,
             buffer = bufnr,
             callback = function()
-              vim.lsp.buf.format()
+              vim.lsp.buf.format({ async = false })
+              vim.lsp.buf.code_action({
+                context = {
+                  only = { "source.organizeImports.ruff" },
+                },
+                apply = true,
+              })
+              vim.wait(200)
             end,
           })
+          -- Organizing Python imports using Ruff.
+          -- Disable this if isort is needed.
+          -- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+          --   pattern = { "*.py" },
+          --   callback = function()
+          --     vim.lsp.buf.code_action({
+          --       context = {
+          --         only = { "source.organizeImports.ruff" },
+          --       },
+          --       apply = true,
+          --     })
+          --     -- vim.lsp.buf.format({ async = true })
+          --     vim.wait(100)
+          --   end,
+          -- })
         end
       end,
     })
